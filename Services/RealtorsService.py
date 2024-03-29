@@ -8,6 +8,9 @@ class RealtorsService:
     # key: chat_id, value : (key: data_name, value: data)
     realtors = []  # TODO - вынесение
     storagePath = "Storage/realtors.json"
+    NOT_VISIBLE_SYMBOL = "ㅤ"
+    NEXT_TEXT = "Далее"
+    BACK_TEXT = "Назад"
 
     @staticmethod
     def process_realtor_data(chatid):  # TODO - вынесение в класс пользовательского ввода
@@ -19,15 +22,33 @@ class RealtorsService:
             RealtorsService.SaveRealtorToJson()
 
     @staticmethod
-    def get_realtors_menu(startIndex, endIndex, pageNumer, pageSize=5):
+    def get_realtors_menu(pageNumber, pageSize=5):
         keyboard = ReplyKeyboardMarkup()
-
-        for realtor in RealtorsService.realtors:
+        endIndex = pageNumber * pageSize - 1
+        startIndex = endIndex - (pageSize - 1)
+        for realtor in RealtorsService.realtors[startIndex:endIndex+1]:
             text = f"{realtor.name} {realtor.surname}"
             button = KeyboardButton(text=text)
             keyboard.add(button)
 
+        # Добавляем кнопку далее, если это необходимо
+        nextText = RealtorsService.NEXT_TEXT
+        if endIndex >= len(RealtorsService.realtors) - 1:
+            nextText = RealtorsService.NOT_VISIBLE_SYMBOL
+
+        btn_next = KeyboardButton(text=nextText)
+
+        # Добавляем кнопку назад, если это необходимо
+        backText = RealtorsService.BACK_TEXT
+        if pageNumber <= 1:
+            backText = RealtorsService.NOT_VISIBLE_SYMBOL
+
+        btn_back = KeyboardButton(text=backText)
+
+        keyboard.add(btn_back,btn_next)
+
         return keyboard
+    
 
     @staticmethod   # TODO - бд
     def SaveRealtorToJson():
