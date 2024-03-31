@@ -1,14 +1,8 @@
 import os
 import json
+from Models.User import User
+from telebot.types import Message
 
-class User:
-    def __init__(self, chat_id):
-        self.chat_id = chat_id
-
-    @staticmethod
-    def Deserialize(data: dict):
-        user = User(data.get("chat_id"))
-        return user
 class UserService:
     users = []
     storagePath = "Storage/users.json"
@@ -17,15 +11,15 @@ class UserService:
     def FindUser(chat_id):
         for user in UserService.users:
             if user.chat_id == chat_id:
-                return chat_id
+                return user
         return None
 
     @staticmethod
-    def GetUser(chat_id):
-        user = UserService.FindUser(chat_id)
+    def GetUserByContext(message : Message):
+        user = UserService.FindUser(message.chat.id)
 
         if user == None:
-            user = User(chat_id)
+            user = User(message.chat.id, message.from_user.username, message.from_user.first_name, message.from_user.last_name, message.from_user.language_code)
             UserService.users.append(user)
 
             UserService.SaveUsersToJson()

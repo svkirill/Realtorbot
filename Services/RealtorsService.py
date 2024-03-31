@@ -11,6 +11,7 @@ class RealtorsService:
     NOT_VISIBLE_SYMBOL = "ㅤ"
     NEXT_TEXT = "Далее"
     BACK_TEXT = "Назад"
+    backmenuu = 'Вернуться в главное меню'
 
     @staticmethod
     def process_realtor_data(chatid):  # TODO - вынесение в класс пользовательского ввода
@@ -46,6 +47,11 @@ class RealtorsService:
         btn_back = KeyboardButton(text=backText)
 
         keyboard.add(btn_back,btn_next)
+
+        btn_menu = RealtorsService.backmenuu
+
+        button_backmenu = KeyboardButton(text=btn_menu)
+        keyboard.add(button_backmenu)
 
         return keyboard
     

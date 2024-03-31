@@ -10,35 +10,37 @@ class MainService:
     bot = telebot.TeleBot('6939293439:AAGacBdkDXD-hBZ5sVHStGnkRrJ8tUyPWQY')
     addrealtortext = 'Добавить риелтора'    # TODO - вынесение
     showrealtors = "Список риелторов"
+    backmenu = 'Вернуться в главное меню'
 
     @staticmethod
     @bot.message_handler(commands=['start'])
     def start_handler(message : Message):
-        user = UserService.GetUser(message.chat.id)
+        user = UserService.GetUserByContext(message)
 
-        MainService.send_start_keyboard(user)
+        MainService.send_start_keyboard(user, "Добро пожаловать!")
 
     @staticmethod
-    def send_start_keyboard(user):
+    def send_start_keyboard(user, message):
+
         keyboard = ReplyKeyboardMarkup()
         button1 = KeyboardButton(text=MainService.addrealtortext)
         button2 = KeyboardButton(text=MainService.showrealtors)
         keyboard.add(button1)
         keyboard.add(button2)
 
-        MainService.bot.send_message(user.chat_id, "Добро пожаловать!", reply_markup=keyboard)
+        MainService.bot.send_message(user.chat_id, message, reply_markup=keyboard)
 
 
     @staticmethod
     @bot.message_handler(content_types=['text'])
     def start(message : Message):
-        user = UserService.GetUser(message.chat.id)
+        user = UserService.GetUserByContext(message)
 
         if message.text == MainService.addrealtortext:
-            MainService.bot.send_message(user.chat_id, "Введите номер телфона")
+
+            MainService.bot.send_message(message.chat.id, "Введите номер телeфона")
             MainService.bot.register_next_step_handler(message, MainService.get_name, key='phonenumber')
         elif message.text == MainService.showrealtors or message.text == RealtorsService.BACK_TEXT or message.text == RealtorsService.NEXT_TEXT:
-
             page = 1
             if message.text == RealtorsService.NEXT_TEXT:
                 page = UserPagesRememberService.NextPageInvoked(message.chat.id)
@@ -47,10 +49,13 @@ class MainService:
 
             MainService.bot.send_message(message.from_user.id,"Смотрите в меню ниже.", reply_markup=RealtorsService.get_realtors_menu(page))
 
+        elif message.text == RealtorsService.backmenuu:
+            MainService.send_start_keyboard(user, "Главное меню")
+
 
     @staticmethod   # TODO - вынесение в класс пользовательского ввода
     def get_name(message : Message, key):
-        user = UserService.GetUser(message.chat.id)
+        user = UserService.GetUserByContext(message.chat.id)
 
         UserInputService.process_data(message, key)
 
@@ -59,7 +64,7 @@ class MainService:
 
     @staticmethod   # TODO - вынесение в класс пользовательского ввода
     def end_data_handler(message: Message, key):
-        user = UserService.GetUser(message.chat.id)
+        user = UserService.GetUserByContext(message.chat.id)
 
         UserInputService.process_data(message, key)
 
@@ -72,7 +77,7 @@ class MainService:
         UserService.InitData()
 
         for user in UserService.users:
-            MainService.send_start_keyboard(user)
+            MainService.send_start_keyboard(user, "Продолжаем работу...")
 
         MainService.bot.polling(none_stop=True, interval=0)
 
