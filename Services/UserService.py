@@ -1,15 +1,19 @@
 import os
 import json
-from Models.User import User
+from Sqlite.realtorss import User
 from telebot.types import Message
 
 class UserService:
-    users = []
-    storagePath = "Storage/users.json"
+    #users = []
+    #storagePath = "Storage/users.json"
+
+    @staticmethod
+    def GetUsers():
+        return User.select()
 
     @staticmethod
     def FindUser(chat_id):
-        for user in UserService.users:
+        for user in User.select():
             if user.chat_id == chat_id:
                 return user
         return None
@@ -19,16 +23,14 @@ class UserService:
         user = UserService.FindUser(message.chat.id)
 
         if user == None:
-            user = User(message.chat.id, message.from_user.username, message.from_user.first_name, message.from_user.last_name, message.from_user.language_code)
-            UserService.users.append(user)
-
-            UserService.SaveUsersToJson()
+            user = User(chat_id = message.chat.id, username = message.from_user.username, first_name = message.from_user.first_name,last_name = message.from_user.last_name,language_code = message.from_user.language_code)
+            #UserService.users.append(user)
+            user.save()
+            #UserService.SaveUsersToJson()
 
         return user
 
-
-
-    @staticmethod  # TODO - бд
+    '''@staticmethod  # TODO - бд
     def SaveUsersToJson():
         realtors = []
         saveRealtors = {"objects": realtors}
@@ -38,9 +40,9 @@ class UserService:
 
         print(saveRealtors)
         with open(UserService.storagePath, 'w') as file:
-            json.dump(saveRealtors, file)
+            json.dump(saveRealtors, file)'''
 
-    @staticmethod  # TODO - бд
+    '''@staticmethod  # TODO - бд
     def LoadDataFromJson():
         if os.path.exists(UserService.storagePath):
             with open(UserService.storagePath, 'r') as file:
@@ -57,4 +59,4 @@ class UserService:
 
     @staticmethod
     def InitData():
-        UserService.users = UserService.LoadDataFromJson()
+        UserService.users = UserService.LoadDataFromJson()'''

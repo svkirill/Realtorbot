@@ -1,3 +1,4 @@
+import base64
 
 # count 65
 # список данных
@@ -28,3 +29,41 @@ startIndex = endIndex - (pageSize - 1)
 
 result = data[startIndex:endIndex+1]    # в срезах координата "до" не включается, поэтому + 1
 print(result)
+
+
+# Button text: {realtor name} - {company} - {phone}
+#              Nikita - OOO Flat - 89274774848
+# realtor.name, realtor.company, realtor.phoneNumber
+
+# Hash
+# data -> уникальная последовательность символов, которая соответствует ТОЛЬКО этим данным.
+# (Nikita - OOO Flat - 89274774848) - hash -> unique
+
+data = 'Nikita - OOO Flat - 89274774848'
+print(hash(data))
+print(hash(data))
+print(hash(data))
+print(hash(data))
+print(hash(data))
+print(hash(data))
+
+
+dataBytes = data.encode('utf-8')    # bytes
+print(dataBytes)
+base64_bytes = base64.b64encode(dataBytes)
+print(base64_bytes)
+base64_text = base64_bytes.decode('utf-8')
+print(base64_text)
+print(base64.b64decode(base64_bytes))
+
+# TmlraXRhIC0gT09PIEZsYXQgLSA4OTI3NDc3NDg0OA==
+
+raltorInfo = 'realtor - data - data'
+dataBytes = raltorInfo.encode('utf-8')    # bytes
+base64_bytes = base64.b64encode(dataBytes)
+base64_text = base64_bytes.decode('utf-8')
+print(base64_text)
+
+
+text = "Func_837383_test"
+print(text.split("_"))
