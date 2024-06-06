@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bbe99337-e306-428e-9644-bb6291ee7a82" name="Changes" comment="доп инфа о пользователе">
-      <change afterPath="$PROJECT_DIR$/Models/Company.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/CompanyService.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sqlite/example.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sqlite/realtorss.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Storage/company.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guidtest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Realtor.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Realtor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/User.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/User.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/RealtorsService.py" beforeDir="false" afterPath="$PROJECT_DIR$/Services/RealtorsService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/UserPagesRememberService.py" beforeDir="false" afterPath="$PROJECT_DIR$/Services/UserPagesRememberService.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Services/UserService.py" beforeDir="false" afterPath="$PROJECT_DIR$/Services/UserService.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Storage/realtor_Иван.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sqlite/realtorss.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sqlite/realtorss.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Storage/realtors.json" beforeDir="false" afterPath="$PROJECT_DIR$/Storage/realtors.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage.db" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,33 +38,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.CompanyService.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Realtor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.RealtorsService.executor&quot;: &quot;Run&quot;,
-    &quot;Python.example.executor&quot;: &quot;Run&quot;,
-    &quot;Python.guidtest.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.realtorss.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.CompanyService.executor": "Run",
+    "Python.Realtor.executor": "Run",
+    "Python.RealtorsService.executor": "Run",
+    "Python.example.executor": "Run",
+    "Python.guidtest.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.realtorss.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Кирилл\Realtorbot\Realtorbot" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.guidtest">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Realtor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Realtorbot" />
       <option name="ENV_FILES" value="" />
@@ -186,9 +177,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.guidtest" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.realtorss" />
+        <item itemvalue="Python.guidtest" />
         <item itemvalue="Python.example" />
         <item itemvalue="Python.Realtor" />
       </list>
@@ -234,12 +225,31 @@
       <option name="project" value="LOCAL" />
       <updated>1711876581242</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="доп инфа о пользователе">
+      <option name="closed" value="true" />
+      <created>1717153079941</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1717153079941</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ddd" />
     <MESSAGE value="доп инфа о пользователе" />
     <option name="LAST_COMMIT_MESSAGE" value="доп инфа о пользователе" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Sqlite/realtorss.py</url>
+          <line>87</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

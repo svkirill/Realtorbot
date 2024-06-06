@@ -23,9 +23,12 @@ class UserService:
         user = UserService.FindUser(message.chat.id)
 
         if user == None:
-            user = User(chat_id = message.chat.id, username = message.from_user.username, first_name = message.from_user.first_name,last_name = message.from_user.last_name,language_code = message.from_user.language_code)
+            print(f"User will be created")
+            user = User.create(chat_id = message.chat.id, username = message.from_user.username, first_name = message.from_user.first_name,last_name = message.from_user.last_name,language_code = message.from_user.language_code)
             #UserService.users.append(user)
-            user.save()
+
+            print(f"User created {user.role.name} {user.chat_id}")
+
             #UserService.SaveUsersToJson()
 
         return user

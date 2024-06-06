@@ -16,8 +16,6 @@ class MainService:
     backmenu = 'Вернуться в главное меню'
     adminbutton = 'Скачать базу пользователей'
 
-
-
     @staticmethod
     @bot.message_handler(commands=['start'])
     def start_handler(message : Message):
@@ -34,7 +32,7 @@ class MainService:
         keyboard.add(button1)
         keyboard.add(button2)
 
-        if user.role == 'admin':
+        if user.role.name == 'admin':
             button3 = KeyboardButton(text=MainService.adminbutton)
             keyboard.add(button3)
 
@@ -65,7 +63,7 @@ class MainService:
             MainService.send_start_keyboard(user, "Главное меню")
 
         elif message.text == MainService.adminbutton:
-            if user.role == 'admin':
+            if user.role.name == 'admin':
                 MainService.SendDataBaseToUser(user.chat_id, [RealtorsService.storagePath, UserService.storagePath])
         else:
             realtorInfo = RealtorsService.GetRealtorInfo(message.text)
@@ -198,7 +196,7 @@ class MainService:
         uniqueCode = splitedData[1]
         print(f"Old unique code: {uniqueCode}")
         # Поменять параметр риэлтора
-        if user.role == "admin":
+        if user.role.name == "admin":
             uniqueCode = RealtorsService.ChangeRaltorParam(uniqueCode, func, data)
             print(f"New unique code: {uniqueCode}")
             MainService.bot.send_message(user.chat_id, 'Данные изменены.')
